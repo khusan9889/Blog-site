@@ -12,7 +12,7 @@ STATUS = (
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     image = models.ImageField(blank = True,upload_to = 'media', height_field=200, width_field=200)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(blank= True,max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
     updated_on = models.DateTimeField(auto_now= True)
     content = models.TextField()
@@ -23,9 +23,9 @@ class Post(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        return self.title + '|' + str(self.author)
+        return self.title + ' | ' + str(self.author)
 
     
     def get_absolute_url(self):
-        return reverse('article-detail', args=(str(self.id)))
-        
+        return reverse('home')
+

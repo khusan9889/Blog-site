@@ -9,10 +9,13 @@
 <h1>Add Post...</h1>
 <br> <br>
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-dark">Post</button>
-</form>
+<div class="form-control">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-dark">Post</button>
+    </form>
+</div>
+
 
 {% endblock %}
