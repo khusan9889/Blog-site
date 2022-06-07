@@ -7,7 +7,7 @@
 
 <ul>
 {% for post in object_list %}
-    <li> <a href="{% url 'article-detail' post.pk %}"> {{ post.title }} </a> - {{ post.author }} <br> <small> {{post.created_on}} <br> 
+    <li> <a href="{% url 'article-detail' post.pk %}"> {{ post.title }} </a> - {{ post.author }} - <i> {{post.category}} </i> <br> <small> {{post.created_on}} <br> 
         {{post.content| truncatewords_html:20| safe}}<br> </small> 
         <!-- checking authentication -->
         {% if user.is_authenticated %}
