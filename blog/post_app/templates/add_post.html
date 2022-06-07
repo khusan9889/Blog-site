@@ -6,6 +6,7 @@
 
 {% block content%}
 
+{% if user.is_authenticated %}
 <h1>Add Post...</h1>
 <br> <br>
 
@@ -16,6 +17,9 @@
         <button class="btn btn-dark">Post</button>
     </form>
 </div>
+{% else %}
+<p style="color:red ;"> <strong> You are not able create post! </strong></p> (PLease login then try again) 
+{% endif %}
 
 
 {% endblock %}

@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-
 {% block title %} Delete Post {% endblock %}
-
 
 
 {% block content%}
 
+
+{% if user.is_authenticated %}
 <h1>Delete Post...</h1>
 <br> 
 <h3> Delete: {{post.title}} post </h3>
@@ -17,6 +17,8 @@
         <a style="margin-left: 20px;" href=" {% url 'home' %} " class="btn btn-dark" > Go Back <-- </a>
     </form>
 </div>
-
+{% else %}
+<p style="color:red ;"> <strong> You are not able delete post! </strong></p> (PLease login then try again) 
+{% endif %}
 
 {% endblock %}

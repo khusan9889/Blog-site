@@ -5,6 +5,7 @@
 
 {% block content%}
 
+{% if user.is_authenticated %}
 <h1>Edit Post...</h1>
 <br> <br>
 
@@ -16,5 +17,9 @@
     </form>
 </div>
 
+{% else %}
+<p style="color:red ;"> <strong>You are not able to make changes!</strong></p> (PLease login then try again)
+{% endif %}
+ 
 
 {% endblock %}
