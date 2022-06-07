@@ -4,12 +4,14 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 
+
 STATUS = (
     (0,"Draft"),
     (1,"Publish")
 )
 
 class Post(models.Model):
+    #creator = ForeignKey(settings.AUTH_USER_MODEL)
     title = models.CharField(max_length=200, unique=True)
     image = models.ImageField(blank = True,upload_to = 'media', height_field=200, width_field=200)
     slug = models.SlugField(blank= True,max_length=200, unique=True)
