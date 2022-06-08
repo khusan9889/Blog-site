@@ -6,19 +6,25 @@
 {% block content%}
 
 {% if user.is_authenticated %}
-<h1>Edit Post...</h1>
-<br> <br>
+    {% if user.id == post.author.id %}
+        <h1>Edit Post...</h1>
+        <br> <br>
 
-<div class="form-control">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-dark">Edit</button>
-    </form>
-</div>
+        <div class="form-control">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-dark">Edit</button>
+            </form>
+        </div>
+    {% else %}
+        <b>You are not allowed to make changes!!! <br>Login as an author :) </b>
+
+    {% endif %}
+    
 
 {% else %}
-<p style="color:red ;"> <strong>You are not able to make changes!</strong></p> (PLease login then try again)
+<p style="color:red ;"> <strong>You are not allowed to make changes!</strong></p> (PLease login then try again)
 {% endif %}
  
 

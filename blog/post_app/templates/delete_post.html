@@ -6,19 +6,25 @@
 
 
 {% if user.is_authenticated %}
-<h1>Delete Post...</h1>
-<br> 
-<h3> Delete: {{post.title}} post </h3>
-<div class="form-control">
-    <form method="POST">
-        {% csrf_token %}
-        <strong>Are you sure?! </strong> <br><br>
-        <button  class="btn btn-dark">Delete Post</button>
-        <a style="margin-left: 20px;" href=" {% url 'home' %} " class="btn btn-dark" > Go Back <-- </a>
-    </form>
-</div>
+    {% if user.id == post.author.id %} <!-- checking authentication -->
+        <h1>Delete Post...</h1>
+        <br> 
+        <h3> Delete: {{post.title}} post </h3>
+        <div class="form-control">
+            <form method="POST">
+                {% csrf_token %}
+                <strong>Are you sure?! </strong> <br><br>
+                <button  class="btn btn-dark">Delete Post</button>
+                <a style="margin-left: 20px;" href=" {% url 'home' %} " class="btn btn-dark" > Go Back <-- </a>
+            </form>
+        </div>
+    {% else %}
+        <b>You are not allowed to delete post!!! <br>Login as an author :) </b>
+        
+    {% endif %}
+        
 {% else %}
-<p style="color:red ;"> <strong> You are not able delete post! </strong></p> (PLease login then try again) 
+    <p style="color:red ;"> <strong> You are not able to delete post! </strong></p> (PLease login then try again) 
 {% endif %}
 
 {% endblock %}

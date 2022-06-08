@@ -8,9 +8,13 @@
 <h1>{{ post.title  }}</h1>
 <p> By: {{ post.author }} - <span> <small style="color: rgb(88, 88, 3);"> created: </small></span>{{ post.created_on }} - <span><small style="color: rgb(88, 88, 3);">updated: </small></span> {{post.updated_on}}
     {% if user.is_authenticated %}
-        <a style="color:rgb(91, 162, 11) ; margin-left: 10px;" href=" {% url 'update_post' post.pk %} "> (Edit) </a>  
-        <small><a style="margin-left: 5px; color: red;" href=" {% url 'delete_post' post.pk %} "> (Delete) </a></small>  
+        {% if user.id == post.author.id %}
+            <a style="color:rgb(91, 162, 11) ; margin-left: 10px;" href=" {% url 'update_post' post.pk %} "> (Edit) </a>  
+            <small><a style="margin-left: 5px; color: red;" href=" {% url 'delete_post' post.pk %} "> (Delete) </a></small>  
+        {% endif %}
+        
     {% endif %}
+
 
 </p>
 <hr> <br> 
