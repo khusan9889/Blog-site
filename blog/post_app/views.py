@@ -1,5 +1,6 @@
 from audioop import reverse
 from datetime import datetime
+from unicodedata import category
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -39,3 +40,9 @@ class AddCategoryView(CreateView):
     model = Category
     template_name = 'add_category.html'
     fields = '__all__'
+
+
+def CategoryView(request, cats):
+    category_posts = Post.objects.filter(category=cats.replace('-', ' '))
+    return render(request, 'categories.html', {'cats':cats.title().replace('-', ' '), 'category_posts': category_posts})
+

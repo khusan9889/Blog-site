@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
-
-
 {% block content%}
 
-<h1>Posts</h1>
+{% if category_posts %}
+
+<h1> Category <b>{{ cats }}</b></h1><br>
 
 <ul>
-{% for post in object_list %}
-    <li> <a href="{% url 'article-detail' post.pk %}"> {{ post.title }} </a> - {{ post.author }} - <i> 
-        <a href=" {% url 'category' post.category %} "> {{post.category|slugify }} </a> </i> <br> 
-        <small> {{post.created_on}} <br> 
+
+{% for post in category_posts %}
+
+    <li> <a href="{% url 'article-detail' post.pk %}"> {{ post.title }} </a> - {{ post.author }}  <br> <small> {{post.created_on}} <br> 
         {{post.content| truncatewords_html:20| safe}}<br> </small> 
         <!-- checking authentication -->
         {% if user.is_authenticated %}
@@ -17,10 +17,16 @@
             <small><a style="margin-left: 5px; color: red;" href=" {% url 'delete_post' post.pk %} "> (Delete) </a></small>
             <br><br>
         {% endif %}
+        
+    </li> 
 
-    </li>   
 {% endfor %}
 </ul>
+
+{% else  %}
+    <h2>No existing page!!!</h2>
+
+{% endif %}
 
 {% endblock %}
 
