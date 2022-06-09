@@ -13,6 +13,7 @@
         <div class="form-control">
             <form method="POST">
                 {% csrf_token %}
+                {{ form.media }}
                 {{ form.as_p }}
                 <button class="btn btn-dark">Edit</button>
             </form>
