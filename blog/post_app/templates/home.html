@@ -10,7 +10,10 @@
     <li> <a href="{% url 'article-detail' post.pk %}"> <b>{{ post.title }}</b> </a> - {{ post.author }} - <i> 
         <a href=" {% url 'category' post.category %} "> {{post.category|slugify }} </a> </i> <br> 
         <small> {{post.created_on}} <br> 
-        {{post.content| truncatewords_html:20| safe}}</small> 
+            <!-- {{post.content| truncatewords_html:20| safe}} -->
+            {{ post.snippet }}
+        </small> 
+        
         <!-- checking authentication -->
         {% if user.is_authenticated %}
             {% if user.id == post.author.id %}

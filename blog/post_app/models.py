@@ -21,6 +21,7 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now= True)
     #content = models.TextField()
     content = RichTextField(blank=True, null=True)
+    snippet = models.CharField(max_length=200)
     created_on = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(User, related_name='blog_post')
     status = models.IntegerField(choices=STATUS, default=0)

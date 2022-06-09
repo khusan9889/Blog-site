@@ -13,7 +13,7 @@ for item in choices:
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields =('title', 'author', 'slug', 'category', 'content', 'status',)
+        fields =('title', 'author', 'slug', 'category', 'content', 'snippet' ,'status',)
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Title of your post'}),
@@ -22,14 +22,18 @@ class PostForm(forms.ModelForm):
             'slug': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Url slug'}),
             #'author': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Your name'}),
             'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
-            'content': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Write your post here...'}),
+            'content': forms.Textarea(attrs={'class': 'form-control'}),
+            'snippet': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Your snippet goes here...'}),
             'status': forms.Select(attrs={'class': 'form-control'}),
+            
         }
 
 class EditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = '__all__'  
+        fields = ('title', 'slug', 'content', 'snippet' ,'status',)
+        #fields = '__all__ '
+
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Title of your post'}),
@@ -39,6 +43,7 @@ class EditForm(forms.ModelForm):
             'updated_on': forms.TextInput(attrs={'class': 'form-control'}),
             'content': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Write yur post here...'}),
             'created_on': forms.DateInput(attrs={'class': 'form-control'}),
+            'snippet': forms.Textarea(attrs={'class': 'form-control'}),
             'status': forms.Select(attrs={'class': 'form-control'}),
 
         }

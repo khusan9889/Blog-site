@@ -13,6 +13,7 @@
         <div class="form-control">
             <form method="POST">
                 {% csrf_token %}
+                
                 <strong>Are you sure?! </strong> <br><br>
                 <button  class="btn btn-dark">Delete Post</button>
                 <a style="margin-left: 20px;" href=" {% url 'home' %} " class="btn btn-dark" > Go Back <-- </a>
