@@ -17,6 +17,12 @@
         <button class="btn btn-dark">Post</button>
     </form>
 </div>
+
+<script>
+    var name = " {{ user.id }} ";
+    document.getElementById("elder").value = name; 
+</script>
+
 {% else %}
 <p style="color:red ;"> <strong> You are not able create post! </strong></p> (PLease login then try again) 
 {% endif %}
