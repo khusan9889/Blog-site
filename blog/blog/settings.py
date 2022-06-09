@@ -26,6 +26,8 @@ INSTALLED_APPS = [
     #local
     'post_app',
     'users',
+    #Text editor for content field 
+    'ckeditor',
     
 ]
 

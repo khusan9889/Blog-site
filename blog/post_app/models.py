@@ -3,7 +3,7 @@ from django.db import models
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
-
+from ckeditor.fields import RichTextField
 
 
 STATUS = (
@@ -19,7 +19,8 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
     category = models.CharField(max_length=200, default='music')
     updated_on = models.DateTimeField(auto_now= True)
-    content = models.TextField()
+    #content = models.TextField()
+    content = RichTextField(blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(User, related_name='blog_post')
     status = models.IntegerField(choices=STATUS, default=0)
@@ -50,3 +51,4 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         return reverse('home')
+
