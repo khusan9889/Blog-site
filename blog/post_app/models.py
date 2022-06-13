@@ -52,3 +52,14 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse('home')
 
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+    profile_pic = models.ImageField(null=True, blank =True, upload_to ='images/profile')
+    website_url = models.CharField(max_length=200, unique=True, null=True, blank =True)
+    instagram_url = models.CharField(max_length=200, unique=True, null=True, blank =True)
+    telegram_url = models.CharField(max_length=200, unique=True, null=True, blank =True)
+
+    def __str__(self):
+        return str(self.user)
