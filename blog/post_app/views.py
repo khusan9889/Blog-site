@@ -52,8 +52,7 @@ class UpdatePostView(UpdateView):
     model = Post
     form_class = EditForm
     template_name = 'update_post.html'
-    #fields = ('title', 'image','slug', 'category', 'content', 'snippet', 'status')
-    # fields = '__all__'
+    
 
 class DeletePostView(DeleteView):
     model = Post

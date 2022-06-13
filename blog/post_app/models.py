@@ -14,12 +14,11 @@ STATUS = (
 class Post(models.Model):
     #creator = ForeignKey(settings.AUTH_USER_MODEL)
     title = models.CharField(max_length=200, unique=True)
-    image = models.ImageField(blank = True,upload_to = 'media', height_field=200, width_field=200)
+    header_image = models.ImageField(null=True, blank =True, upload_to ='images/')
     slug = models.SlugField(blank= True,max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
     category = models.CharField(max_length=200, default='music')
     updated_on = models.DateTimeField(auto_now= True)
-    #content = models.TextField()
     content = RichTextField(blank=True, null=True)
     snippet = models.CharField(max_length=200)
     created_on = models.DateTimeField(auto_now_add=True)
