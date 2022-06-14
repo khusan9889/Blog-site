@@ -61,7 +61,6 @@ class CreateProfilePageView(CreateView):
     model = Profile
     form_class = ProfilePageForm
     template_name = 'registration/create_user_profile_page.html'
-    #fields = '__all__'
 
     def form_valid(self, form):
         form.instance.user = self.request.user

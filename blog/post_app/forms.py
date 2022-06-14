@@ -1,5 +1,6 @@
+#from xml.etree.ElementTree import Comment
 from django import forms
-from .models import Post, Category
+from .models import Post, Category, Comment
 
 #choices = [('hobby', 'hobby'), ('movie', 'movie') ,('coding', 'coding'),  ('sport', 'sport'), ('art', 'art'), ('music', 'music')]
 
@@ -47,4 +48,14 @@ class EditForm(forms.ModelForm):
         }
         
 
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('name', 'body')
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Title of your post'}),
+            'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Url slug'}),
+
+        }
 
