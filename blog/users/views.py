@@ -1,5 +1,5 @@
 #from cProfile import Profile
-from django.shortcuts import get_object_or_404, render, get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.urls import reverse_lazy
