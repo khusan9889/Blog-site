@@ -47,3 +47,11 @@ class ShowProfilePageView(DetailView):
         
         context["page_user"] = page_user
         return context
+
+
+class EditProfilePageView(generic.UpdateView):
+    model = Profile
+    template_name = 'registration/edit_profile_page.html'
+
+    fields = ['bio', 'profile_pic', 'website_url', 'instagram_url', 'telegram_url']
+    success_url = reverse_lazy('home')
