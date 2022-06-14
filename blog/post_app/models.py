@@ -16,7 +16,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     header_image = models.ImageField(null=True, blank =True, upload_to ='images/')
     slug = models.SlugField(blank= True,max_length=200, unique=True)
-    author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
+    author = models.ForeignKey(Profile, on_delete= models.CASCADE,related_name='blog_posts')
     category = models.CharField(max_length=200, default='music')
     updated_on = models.DateTimeField(auto_now= True)
     content = RichTextField(blank=True, null=True)
