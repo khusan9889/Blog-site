@@ -7,7 +7,7 @@
 
 <ul>
 {% for post in object_list %}
-    <li> <a href="{% url 'article-detail' post.pk %}"> <b>{{ post.title }}</b> </a> - {{ post.author }} - <i> 
+    <li> <a href="{% url 'article-detail' post.pk %}"> <b>{{ post.title }}</b> </a> - {{ post.author.user }} - <i> 
         <a href=" {% url 'category' post.category %} "> {{post.category|slugify }} </a> </i> <br> 
         <small> {{post.created_on}} <br> 
             <!-- {{post.content| truncatewords_html:20| safe}} -->
@@ -16,7 +16,7 @@
         
         <!-- checking authentication -->
         {% if user.is_authenticated %}
-            {% if user.id == post.author.id %}
+            {% if user.id == post.author.profile.id %}
                 <small><a style="margin-left: 5px;" href=" {% url 'update_post' post.pk %} "> (Edit) </a></small>
                 <small><a style="margin-left: 5px; color: red;" href=" {% url 'delete_post' post.pk %} "> (Delete) </a></small>
                 <br><br>
