@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'users',
     #Text editor for content field 
     'ckeditor',
+    'rest_framework',
     
 ]
 
@@ -92,6 +93,17 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
+# Connecting DRANGORESTFRAMEWORK
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -125,10 +137,6 @@ STATICFILES_DIRS = (
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-
-
 
 
 LOGIN_REDIRECT_URL = 'home'
