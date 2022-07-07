@@ -15,6 +15,64 @@ from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 
 
+#=====   DRF   =====
+# ====  DRF  ====
+from rest_framework import generics
+from . import serializers
+
+#API view
+class PostList(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = serializers.PostSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = serializers.PostSerializer
+
+class CommentList(generics.ListCreateAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = serializers.CommentSerializer
+    
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = serializers.CommentSerializer
+
+
+class CommentList(generics.ListCreateAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = serializers.CommentSerializer
+    
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = serializers.CommentSerializer
+    
+
+class CategoryList(generics.ListCreateAPIView):
+    queryset = Category.objects.all()
+    serializer_class = serializers.CategorySerializer
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Category.objects.all()
+    serializer_class = serializers.PostSerializer
+    
+
+# ====     ====
+
+
 class HomeView(ListView):
     model = Post
     template_name = "home.html"

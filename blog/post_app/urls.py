@@ -1,7 +1,7 @@
-from ipaddress import NetmaskValueError
+#from ipaddress import NetmaskValueError
 from django.urls import path
-from .views import AddCategoryView, AddPostView, CategoryListView, DeletePostView, HomeView, ArticleDetailView, UpdatePostView, DeletePostView, AddCategoryView, CategoryView, CategoryListView, LikeView, AddCommentView
-
+from .views import AddCategoryView, AddPostView, CategoryListView, DeletePostView, HomeView, ArticleDetailView, UpdatePostView, DeletePostView, AddCategoryView, CategoryView, CategoryListView, LikeView, AddCommentView, PostList, PostDetail
+from . import views
 
 urlpatterns = [
   path('', HomeView.as_view(), name= 'home'),
@@ -14,5 +14,12 @@ urlpatterns = [
   path('category-list/', CategoryListView, name = 'category-list'),
   path('like_post/<int:pk>', LikeView , name='like_post'),
   path('article/<int:pk>/comment/', AddCommentView.as_view(), name = 'add_comment'),
+  path('posts/', views.PostList.as_view()),
+  path('posts/<int:pk>/', views.PostDetail.as_view()),
+  path('comments/', views.CommentList.as_view()),
+  path('comments/<int:pk>/', views.CommentDetail.as_view()),
+  path('categories/', views.CategoryList.as_view()),
+  path('categories/<int:pk>/', views.CategoryDetail.as_view()),
+
 
 ]
