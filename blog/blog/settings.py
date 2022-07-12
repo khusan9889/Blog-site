@@ -141,3 +141,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 465 #2525
+# EMAIL_HOST_USER = 'k.khusan2003@gmail.com'
+# EMAIL_HOST_PASSWORD = 'SaidAzim2017'
+# EMAIL_USE_TLS = False
+# EMAIL_USE_SSL = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # new
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = 'Ulugbek_29062003'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
