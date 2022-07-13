@@ -156,5 +156,4 @@ EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = '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'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
-
+DEFAULT_FROM_EMAIL = 'ulugbekmuslitdinov@gmail.com'
