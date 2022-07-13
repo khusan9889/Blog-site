@@ -13,9 +13,11 @@ from .models import Post, Category, Comment
 from .forms import PostForm, EditForm, CommentForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
+#EMAIL
+from django.conf import settings
+from django.core.mail import send_mail
 
 
-#=====   DRF   =====
 # ====  DRF  ====
 from rest_framework import generics
 from . import serializers
@@ -166,3 +168,17 @@ class AddCommentView(CreateView):
     def form_valid(self, form):
         form.instance.post_id = self.kwargs["pk"]
         return super().form_valid(form)
+
+
+# class Comment_to_Post():
+
+#     email_template_name = 'email_to_comment.html'
+#     success_url = reverse_lazy('home')
+
+
+
+
+# if post.author == comments.body:
+    
+
+send_mail('You have received feedback to your post!', 'Check it in our Blog-site in comments section. ', settings.EMAIL_HOST_USER, ['k.xusan_2003@mail.ru'])
