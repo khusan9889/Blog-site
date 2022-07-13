@@ -153,7 +153,7 @@ LOGOUT_REDIRECT_URL = 'home'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # new
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = 'Ulugbek_29062003'
+EMAIL_HOST_PASSWORD = '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'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
