@@ -9,6 +9,7 @@ django-ckeditor = "*"
 djangorestframework = "*"
 pillow = "*"
 gunicorn = "*"
+whitenoise = "*"
 
 [dev-packages]
 
