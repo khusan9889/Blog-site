@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic'
     'django.contrib.staticfiles',
     #local
     'post_app',
@@ -29,6 +30,7 @@ INSTALLED_APPS = [
     #Text editor for content field 
     'ckeditor',
     'rest_framework',
+    
     
 ]
 
