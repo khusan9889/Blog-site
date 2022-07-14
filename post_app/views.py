@@ -1,7 +1,7 @@
 from audioop import reverse
 from datetime import datetime
 from unicodedata import category
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 from django.views.generic import (
     ListView,
     DetailView,
@@ -159,26 +159,24 @@ def LikeView(request, pk):
     return HttpResponseRedirect(reverse("article-detail", args=[str(pk)]))
 
 
-class AddCommentView(CreateView):
-    model = Comment
-    form_class = CommentForm
-    template_name = "add_comment.html"
-    success_url = reverse_lazy("home")
+# class AddCommentView(CreateView):
+#     model = Comment
+#     form_class = CommentForm
+#     template_name = "add_comment.html"
+#     success_url = reverse_lazy("home")
 
-    def form_valid(self, form):
-        form.instance.post_id = self.kwargs["pk"]
-        return super().form_valid(form)
-
-
-# class Comment_to_Post():
-
-#     email_template_name = 'email_to_comment.html'
-#     success_url = reverse_lazy('home')
+#     def form_valid(self, form):
+#         form.instance.post_id = self.kwargs["pk"]
+#         return super().form_valid(form)
 
 
-
-
-# if post.author == comments.body:
-    
-
-send_mail('You have received feedback to your post!', 'Check it in our Blog-site in comments section. ', settings.EMAIL_HOST_USER, ['k.xusan_2003@mail.ru'])
+def AddComment(request, post_id):
+    if request.method == 'POST':
+        post = Post.objects.get(id = post_id)
+        form = CommentForm(data=request.POST)
+        if form.is_valid():
+            new_comment=form.save(commit=False)
+            new_comment.post=post
+            author = post.author
+            send_mail('You have received feedback to your post!', 'Check it in our Blog-site in comments section.', 'k.khusan2003@gmail.com' , [author])
+            return redirect('home')
