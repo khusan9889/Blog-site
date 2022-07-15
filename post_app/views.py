@@ -181,3 +181,4 @@ def AddComment(request, post_id):
             author = post.author.email
             send_mail('You have received feedback to your post!', 'Check it in our Blog-site in comments section.', 'k.khusan2003@gmail.com' , [author])
             return redirect('home')
+    
