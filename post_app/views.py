@@ -171,14 +171,17 @@ def LikeView(request, pk):
 
 
 def AddComment(request, post_id):
+    post = Post.objects.get(id = post_id)
     if request.method == 'POST':
-        post = Post.objects.get(id = post_id)
         form = CommentForm(data=request.POST)
-        template_name = "add_comment.html"
         if form.is_valid():
             new_comment=form.save(commit=False)
             new_comment.post=post
             author = post.author.email
             send_mail('You have received feedback to your post!', 'Check it in our Blog-site in comments section.', 'k.khusan2003@gmail.com' , [author])
             return redirect('home')
-    
+        
+    else:
+        form = CommentForm()
+        context = {"form":form}
+        return render(request, "add_comment.html", context)
