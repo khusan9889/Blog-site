@@ -178,6 +178,7 @@ def AddComment(request, post_id):
             new_comment=form.save(commit=False)
             new_comment.post=post
             author = post.author.email
+            new_comment.save()
             send_mail('You have received feedback to your post!', 'Check it in our Blog-site in comments section.', 'k.khusan2003@gmail.com' , [author])
             return redirect('home')
         
