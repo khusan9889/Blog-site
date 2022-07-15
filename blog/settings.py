@@ -22,6 +22,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    #whitenoise
+    'whitenoise.runserver_nostatic', 
     'django.contrib.staticfiles',
     #local
     'post_app',
@@ -29,6 +31,7 @@ INSTALLED_APPS = [
     #Text editor for content field 
     'ckeditor',
     'rest_framework',
+    
     
 ]
 
@@ -125,21 +128,25 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS  = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_FINDERS = [
+
+
+STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'media'),
+# )
+
+STATICFILES_FINDERS=[
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'media'),
-)
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -151,12 +158,6 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 465 #2525
-# EMAIL_HOST_USER = 'k.khusan2003@gmail.com'
-# EMAIL_HOST_PASSWORD = 'SaidAzim2017'
-# EMAIL_USE_TLS = False
-# EMAIL_USE_SSL = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # new
 EMAIL_HOST = 'smtp.gmail.com'
